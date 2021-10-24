@@ -1,13 +1,14 @@
 <template>
 <div>
-    <Nav />
     <div v-if="product" class="container py-5">
         <div class="hero-container">
             <img :src="require(`@/assets/images/${product.image}`)" alt="" class="image">
             <div class="info-box">
                 <h1>{{ product.title }}</h1>
                 <p class="snippet">{{ product.snippet }}</p>
-                
+                <RentModal 
+                    :product="product"
+                />
             </div>
         </div>
         <div class="whats-included-container">
@@ -33,6 +34,7 @@
                 {{ product.description }}
             </p>
         </div>
+        <Reviews />
     </div>
     <div v-else class="container padding">
         Page not found
@@ -42,8 +44,9 @@
 
 <script>
 import Nav from '../../components/Nav.vue'
+import Reviews from '../../components/Reviews.vue'
     export default {
-  components: { Nav },
+  components: { Nav, Reviews },
         computed: {
             product() {
                 return this.$store.getters.getProductById(this.$route.params.id)

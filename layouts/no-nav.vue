@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Nav />
+    <NuxtLink to="/">Go back </NuxtLink>
     <Nuxt />
   </div>
 </template>
